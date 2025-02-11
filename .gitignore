@@ -6,3 +6,4 @@
 # most important files to secure as they contain credentials used by terraform
 terraform.tfstate
 terraform.tfstate.backup
+terraform.tfvars

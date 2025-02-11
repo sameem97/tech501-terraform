@@ -8,35 +8,35 @@ data "aws_vpc" "default" {
 }
 
 resource "aws_security_group" "app_sg" {
-  name        = "tech501-sameem-tf-allow-port-22-3000-80"
-  description = "Allow inbound traffic on port 22 from localhost, 3000 and 80 from anywhere"
+  name        = var.sg_name
+  description = "Allow inbound traffic on port 22, 3000 and 80"
   vpc_id      = data.aws_vpc.default.id
 
   ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["127.0.0.1/32"]
+    cidr_blocks = var.ingress_ssh
   }
 
   ingress {
     from_port   = 3000
     to_port     = 3000
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.ingress_nodejs
   }
 
   ingress {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.ingress_http
   }
 
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.egress_all
   }
 }
