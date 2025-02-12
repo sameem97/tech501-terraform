@@ -4,12 +4,11 @@ provider "aws" {
 
 data "aws_vpc" "default" {
   default = true
-
 }
 
 resource "aws_security_group" "app_sg" {
   name        = var.sg_name
-  description = "Allow inbound traffic on port 22, 3000 and 80"
+  description = var.description
   vpc_id      = data.aws_vpc.default.id
 
   ingress {

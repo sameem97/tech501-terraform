@@ -8,11 +8,6 @@ variable "instance_type" {
   type        = string
 }
 
-variable "security_group_id" {
-  description = "The ID of the security group to associate with the instance"
-  type        = string
-}
-
 variable "key_name" {
   description = "The name of the key pair to use for the instance"
   type        = string
@@ -46,4 +41,14 @@ variable "ingress_http" {
 variable "egress_all" {
   description = "The IP address to allow all egress traffic to"
   type        = list(string)
+}
+
+variable associate_public_ip_address {
+  description = "Associate a public IP address with the instance"
+  type        = bool
+}
+
+variable "description" {
+  description = "The description of the security group"
+  type        = string 
 }

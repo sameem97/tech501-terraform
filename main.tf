@@ -19,6 +19,7 @@ module "nsg" {
   ingress_nodejs = var.ingress_nodejs
   ingress_ssh    = var.ingress_ssh
   sg_name        = var.sg_name
+  description    = var.description
 }
 
 module "ec2" {
@@ -27,5 +28,6 @@ module "ec2" {
   instance_type     = var.instance_type
   key_name          = var.key_name
   instance_name     = var.instance_name
+  associate_public_ip_address = var.associate_public_ip_address
   security_group_id = module.nsg.security_group_id
 }

@@ -22,3 +22,8 @@ variable egress_all {
     description = "The IP address to allow all egress traffic to"
     type        = list(string)
 }
+
+variable "description" {
+    description = "The description of the security group"
+    type        = string
+}
